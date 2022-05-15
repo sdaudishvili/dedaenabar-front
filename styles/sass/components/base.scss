@@ -1,0 +1,9 @@
+.base-transition {
+  @apply duration-150;
+  transition-property: background-color, border-color, color, fill;
+}
+
+.home-page__title {
+  @apply leading-1-0 uppercase whitespace-nowrap;
+  font-size: clamp(6rem, 11.6vw, 23rem);
+}

@@ -1,0 +1,9 @@
+:root {
+  --dark: #243628;
+  --light: #F5EFE4;
+}
+
+html.dark:root {
+  --dark: #F5EFE4;
+  --light: #243628;
+}
