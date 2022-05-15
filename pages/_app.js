@@ -4,10 +4,10 @@ import '@/styles/sass/style.scss';
 import 'swiper/swiper.scss';
 
 import PropTypes from 'prop-types';
-import { HeaderTagsRenderer } from '@/components/Common/HeaderTagsRenderer';
 import { renderScriptTags } from '@/utils/renderScriptTags';
 
 import { Layout } from '@/components/Layout';
+import { HeaderTagsRenderer } from '@/components/HeaderTagsRenderer';
 
 function App({ Component, pageProps }) {
   const { analytics = {}, openGraph = {}, socialLinks = {} } = pageProps;

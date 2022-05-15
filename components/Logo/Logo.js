@@ -1,6 +1,6 @@
-import { SVG } from '@/components/Common/SVG';
 import { LogoIcon } from '@/components/Vectors/Logo';
 import { RouterLink } from '../RouterLink';
+import { SVG } from '../SVG';
 
 function Logo({ ...rest }) {
   return (

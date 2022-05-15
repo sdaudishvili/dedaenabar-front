@@ -1,5 +1,5 @@
 import { getHomePageContent } from '@/api/common';
-import { RegistrationForm } from '@/components/Common/RegistrationForm';
+import { RegistrationForm } from '@/components/RegistrationForm';
 import { withDefaultProps } from '@/utils/withDefaultProps';
 
 function Home() {

@@ -1,9 +1,9 @@
 import clsx from 'clsx';
 import propTypes from 'prop-types';
-import { IconButton } from '@/components/Common/IconButton';
-import { SVG } from '@/components/Common/SVG';
 import { FacebookIcon } from '@/components/Vectors/FacebookIcon';
 import { InstagramIcon } from '@/components/Vectors/InstagramIcon';
+import { IconButton } from '@/components/IconButton';
+import { SVG } from '@/components/SVG';
 
 function Footer({ socialLinks, className }) {
   JSON.stringify(socialLinks);
