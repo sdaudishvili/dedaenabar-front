@@ -45,7 +45,11 @@ function RegistrationForm({ className }) {
         </div>
       </div>
       <div className="h-10-0 w-full border-t font-ranua-rg text-3-6 relative">
-        <button type="button" onClick={submitHandler} className="absolute inset-0 hover:bg-purple duration-150">
+        <button
+          type="button"
+          onClick={submitHandler}
+          className="absolute inset-0 hover:bg-purple text-dark duration-150"
+        >
           Confirm
         </button>
         <div
