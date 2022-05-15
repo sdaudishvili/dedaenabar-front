@@ -155,3 +155,16 @@ input {
     background: #7c7a9d;
   }
 }
+
+.anim {
+  animation: anim 3s infinite;
+}
+
+@keyframes anim {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-50%);
+  }
+}
