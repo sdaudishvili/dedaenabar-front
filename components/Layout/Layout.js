@@ -6,7 +6,7 @@ function Layout({ children, socialLinks }) {
   return (
     <div className="grid grid-rows-[max-content_minmax(0,1fr)_max-content] min-h-screen container">
       <Header />
-      <main className="pb-8-4 flex-1">{children}</main>
+      <main className="">{children}</main>
       <Footer socialLinks={socialLinks} />
     </div>
   );

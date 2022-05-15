@@ -21,9 +21,6 @@ function HeaderTagsRenderer(props) {
       {description && <meta name="twitter:description" key="twitterDescr" content={description} />}
 
       {image && <meta name="twitter:image" key="twitterImage" content={image} />}
-      <meta key="viewport" name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=3.0" />
-
-      <link rel="icon" type="image/png" href="/favicon.png" />
       {children}
     </Head>
   );
