@@ -6,6 +6,7 @@ import { Input } from '../Input';
 function RegistrationForm({ className }) {
   const [values, setValues] = React.useState({});
   const [file, setFile] = React.useState();
+  const [success, setSuccess] = React.useState(false);
 
   const changeHandler = (e) => {
     setValues({ ...values, [e.target.name]: e.target.value });
@@ -19,6 +20,7 @@ function RegistrationForm({ className }) {
     fd.append('email', values.email);
     fd.append('file', file);
     console.log(fd);
+    setSuccess(true);
   };
 
   const generateTextFieldProps = (key) => ({
@@ -42,9 +44,19 @@ function RegistrationForm({ className }) {
           <ImageUploader onChange={setFile} className="col-span-2" />
         </div>
       </div>
-      <button type="button" onClick={submitHandler} className="h-10-0 w-full border-t font-ranua-rg text-3-6">
-        Confirm
-      </button>
+      <div className="h-10-0 w-full border-t font-ranua-rg text-3-6 relative">
+        <button type="button" onClick={submitHandler} className="absolute inset-0 hover:bg-purple duration-150">
+          Confirm
+        </button>
+        <div
+          className={clsx(
+            { 'opacity-0 pointer-events-none': !success },
+            'absolute inset-0 bg-green flex items-center justify-center duration-150 text-[#243628]'
+          )}
+        >
+          Success
+        </div>
+      </div>
     </div>
   );
 }
