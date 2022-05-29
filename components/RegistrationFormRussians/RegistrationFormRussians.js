@@ -75,22 +75,22 @@ function RegistrationFormRussians({ className }) {
 
   return (
     <div className={clsx(className, 'border')}>
-      <div className="px-13-2 pt-6-0 pb-8-3 text-1-8">
-        <p className="text-4-8 font-ranua-rg">
+      <div className="md:px-13-2 px-2-5 md:pt-6-0 pt-2-5 md:pb-8-3 pb-2-5 md:text-1-8 text-1-4">
+        <p className="md:text-4-8 text-3-6 font-ranua-rg">
           Registration <span className="text-purple">Form</span>
         </p>
-        <div className="grid grid-cols-2 gap-x-3-0 gap-y-7-0 mt-6-6">
+        <div className="grid md:grid-cols-2 grid-cols-1 gap-3-0 md:mt-6-6 mt-3-0">
           <Input {...generateTextFieldProps('first_name')} placeholder="Name" />
           <Input {...generateTextFieldProps('last_name')} placeholder="Surname" />
         </div>
-        <div className="font-neue-lt italic text-1-6 mt-5-0 capitalize">
+        <div className="font-neue-lt italic md:text-1-6 text-1-2 md:mt-5-0 mt-3-0 capitalize">
           I am a citizen of Russia visiting Georgia. Having respect for my host country and its people, I agree to
           following:
         </div>
-        <div className="mt-4-0">
+        <div className="md:mt-4-0 mt-2-5">
           {firstHalf.map((x) => (
             <Checkbox
-              className="mt-2-0"
+              className="md:mt-2-0 mt-1-6"
               key={x.key}
               label={x.label}
               checked={!!values[x.key]}
@@ -98,11 +98,11 @@ function RegistrationFormRussians({ className }) {
             />
           ))}
         </div>
-        <div className="font-neue-lt italic text-1-6 mt-4-0 capitalize">
+        <div className="font-neue-lt italic md:text-1-6 text-1-2 md:mt-4-0 mt-3-0 capitalize">
           I understand that Dedaena bar is a friendly and tolerant place and Visa policy had been implemented due to a
           delicate political situation and some “bad” Russians who misbehaved in Dedaena bar.
         </div>
-        <div className="font-neue-lt italic text-1-6 mt-2-0 capitalize">
+        <div className="font-neue-lt italic md:text-1-6 text-1-2 mt-2-0 capitalize">
           I have read through General code of behavior:
         </div>
         <div className="mt-2-0">
@@ -116,10 +116,10 @@ function RegistrationFormRussians({ className }) {
             />
           ))}
         </div>
-        <div className="font-neue-lt italic text-1-6 mt-5-0 capitalize">
+        <div className="font-neue-lt italic md:text-1-6 text-1-2 md:mt-5-0 mt-3-0 capitalize">
           Provide any kind of ID for entering Dedaena Bar. To receive your visa please input your email:
         </div>
-        <Input {...generateTextFieldProps('email')} placeholder="Email" className="w-50-percent mt-3-0" />
+        <Input {...generateTextFieldProps('email')} placeholder="Email" className="md:w-50-percent mt-3-0" />
       </div>
       <FormSubmitButton success={success} onClick={submitHandler} className="border-t">
         Confirm

@@ -7,8 +7,8 @@ import { foods } from '@/mocks/foods';
 
 function Home() {
   return (
-    <div className="home-page h-full border pt-13-0 px-26-5 pb-16-2">
-      <div className="absolute left-0 right-0 bg-light text-dark pt-6-0 pb-3-0">
+    <div className="home-page h-full md:border md:pt-13-0 md:px-26-5 pb-16-2">
+      <div className="absolute left-0 right-0 bg-light text-dark pt-6-0 pb-3-0 md:block hidden">
         <div className="w-[95%] m-auto">
           {Array(5)
             .fill()

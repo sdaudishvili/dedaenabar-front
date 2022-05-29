@@ -5,7 +5,7 @@ function FormSubmitButton(props) {
   const { className, onClick, success, children } = props;
 
   return (
-    <div className={clsx(className, 'h-10-0 w-full font-ranua-rg text-3-6 relative')}>
+    <div className={clsx(className, 'md:h-10-0 h-6-0 w-full font-ranua-rg md:text-3-6 text-2-4 relative')}>
       <button type="button" onClick={onClick} className="absolute inset-0 hover:bg-purple text-dark duration-150">
         {children}
       </button>

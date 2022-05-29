@@ -32,16 +32,20 @@ function RegistrationForm({ className }) {
 
   return (
     <div className={clsx(className, 'border')}>
-      <div className="px-13-2 pt-6-0 pb-8-3 text-1-8">
-        <p className="text-4-8 font-ranua-rg">
+      <div className="md:px-13-2 px-2-5 md:pt-6-0 pt-2-5 md:pb-8-3 pb-2-5 md:text-1-8 text-1-4">
+        <p className="md:text-4-8 text-3-6 font-ranua-rg">
           Registration <span className="text-purple">Form</span>
         </p>
-        <div className="grid grid-cols-2 gap-x-3-0 gap-y-7-0 mt-6-6">
+        <div className="grid md:grid-cols-2 grid-cols-1 gap-x-3-0 md:gap-y-7-0 gap-y-3-0 md:mt-6-6 mt-4-0">
           <Input {...generateTextFieldProps('first_name')} placeholder="Name" />
           <Input {...generateTextFieldProps('last_name')} placeholder="Surname" />
-          <Input {...generateTextFieldProps('fb_profile')} placeholder="Facebook Profile Link" className="col-span-2" />
-          <Input {...generateTextFieldProps('email')} placeholder="E-mail" className="col-span-2" />
-          <ImageUploader onChange={setFile} className="col-span-2" />
+          <Input
+            {...generateTextFieldProps('fb_profile')}
+            placeholder="Facebook Profile Link"
+            className="md:col-span-2"
+          />
+          <Input {...generateTextFieldProps('email')} placeholder="E-mail" className="md:col-span-2" />
+          <ImageUploader onChange={setFile} className="md:col-span-2" />
         </div>
       </div>
       <FormSubmitButton success={success} onClick={submitHandler} className="border-t">

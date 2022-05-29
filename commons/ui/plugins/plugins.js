@@ -14,12 +14,24 @@ const desktopBreakpoints = [
 
 const tabletBreakPoints = ['1024px', '992px', '820px', '768px'];
 
-const mobileBreakpoints = ['750px', '640px', '600px', '540px', '505px', '480px', '415px', '375px', '360px', '320px'];
+const mobileBreakpoints = [
+  '750px',
+  '640px',
+  '600px',
+  '540px',
+  '505px',
+  '480px',
+  '415px',
+  '390px',
+  '375px',
+  '360px',
+  '320px'
+];
 
 const ratio = {
   desktop: 192,
   tablet: 128,
-  mobile: 75
+  mobile: 39
 };
 
 const getFontSizeVal = (width, ratio) => `${+width.slice(0, -2) / ratio}px`;
@@ -56,7 +68,7 @@ const container = {
       width: 'auto'
     },
     '@media (max-width: 750px)': {
-      padding: '0 4rem',
+      padding: '0 2rem',
       width: 'auto'
     }
   }

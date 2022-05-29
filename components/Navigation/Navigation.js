@@ -11,7 +11,7 @@ function Navigation({ className }) {
     else push('#menu');
   };
   return (
-    <nav className={clsx(className, ' text-2-2 font-neue-lt')}>
+    <nav className={clsx(className, ' text-2-2 font-neue-lt md:block hidden')}>
       <ul className="flex items-center">
         <li className={clsx({ 'font-neue-bd': pathname === '/' }, 'mr-5-0')}>
           <RouterLink href="/">/ Registration</RouterLink>

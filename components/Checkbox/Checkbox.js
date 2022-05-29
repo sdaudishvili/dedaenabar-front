@@ -21,7 +21,7 @@ function Checkbox({ className, onClick, label, checked }) {
           className={clsx({ 'opacity-0 scale-0 stroke-current': !checked }, 'w-1-6 pointer-events-none duration-150')}
         />
       </div>
-      <div className="text-1-6 font-ranua-rg capitalize flex-1">{label}</div>
+      <div className="md:text-1-6 text-1-2 font-ranua-rg capitalize flex-1">{label}</div>
     </div>
   );
 }

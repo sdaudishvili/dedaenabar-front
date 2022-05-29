@@ -11,7 +11,7 @@ import { MenuLogo } from '@/components/Vectors/MenuLogo';
 SwiperCore.use([Navigation]);
 
 const arrowWrapperClassSet =
-  'w-5-5 h-5-5 flex items-center justify-center rounded-full border bg-light hover:bg-dark text-dark hover:text-light duration-150';
+  'md:w-5-5 md:h-5-5 w-4-5 h-4-5 flex items-center justify-center rounded-full border hover:bg-purple duration-150';
 
 const swiperOptions = {
   spaceBetween: 50,
@@ -36,15 +36,15 @@ function Menu({ className, foods, drinks }) {
 
   const foodGeoNode = (
     <div>
-      <div className="font-bpg-square-caps text-2-4 mb-4-0">ვეგეტარიანული სამზარეულო</div>
+      <div className="font-bpg-square-caps md:text-2-4 text-1-4 md:mb-4-0 mb-2-5">ვეგეტარიანული სამზარეულო</div>
       <ul>
         {foods &&
           foods.map((x, i) => (
-            <li className="mb-3-6" key={JSON.stringify(i)}>
-              <p className="font-bpg-square-caps text-1-8">
+            <li className="md:mb-3-6 mb-2-5" key={JSON.stringify(i)}>
+              <p className="font-bpg-square-caps md:text-1-8 text-1-4">
                 {x.title_geo} {x.price}
               </p>
-              <p className="mt-1-0 font-bpg-square text-1-6">{x.description_geo}</p>
+              <p className="md:mt-1-0 mt-0-7 font-bpg-square md:text-1-6 text-1-2">{x.description_geo}</p>
             </li>
           ))}
       </ul>
@@ -53,15 +53,15 @@ function Menu({ className, foods, drinks }) {
 
   const foodEngNode = (
     <div>
-      <div className="font-ranua-md text-2-4 mb-4-0">VEGETARIAN FOOD</div>
+      <div className="font-ranua-md md:text-2-4 text-1-4 md:mb-4-0 mb-2-5">VEGETARIAN FOOD</div>
       <ul>
         {foods &&
           foods.map((x, i) => (
-            <li className="mb-3-6" key={JSON.stringify(i)}>
-              <p className="font-ranua-md text-1-8">
+            <li className="md:mb-3-6 mb-2-5" key={JSON.stringify(i)}>
+              <p className="font-ranua-md md:text-1-8 text-1-4">
                 {x.title_eng} {x.price}
               </p>
-              <p className="mt-1-0 font-neue-lt text-1-6">{x.description_eng}</p>
+              <p className="md:mt-1-0 mt-0-7 font-neue-lt md:text-1-6 text-1-2">{x.description_eng}</p>
             </li>
           ))}
       </ul>
@@ -70,17 +70,17 @@ function Menu({ className, foods, drinks }) {
 
   const drinksNode = (
     <div>
-      <ul className="columns-2">
+      <ul className="md:columns-2">
         {Object.entries(reducedDrinks) &&
           Object.entries(reducedDrinks).map(([title, curDrinks]) => {
             const [titleEng, titleGeo] = title?.split('|') || [];
             return (
-              <li className="mb-5-0" key={title}>
+              <li className="md:mb-5-0 mb-2-0" key={title}>
                 <div className="">
-                  <span className="font-ranua-md uppercase pr-1-0 text-2-4">{titleEng}</span>
-                  <span className="font-bpg-square-caps text-2-0">{titleGeo}</span>
+                  <span className="font-ranua-md uppercase pr-1-0 md:text-2-4 text-1-4">{titleEng}</span>
+                  <span className="font-bpg-square-caps md:text-2-0 text-1-2">{titleGeo}</span>
                 </div>
-                <ul className="mt-0-5 text-1-8 font-ranua-md">
+                <ul className="mt-0-5 md:text-1-8 text-1-2 font-ranua-md">
                   {curDrinks &&
                     curDrinks.map((x) => (
                       <li key={x.title}>
@@ -101,28 +101,28 @@ function Menu({ className, foods, drinks }) {
 
   return (
     <div className={clsx(className, 'menu relative select-none')} id="menu">
-      <div className="flex items-center justify-between text-6-2 font-ranua-rg">
+      <div className="flex items-center justify-between md:text-6-2 text-3-6 font-ranua-rg">
         <div>/ Menu</div>
         <div className="flex items-center">
           <IconButton className={clsx(arrowWrapperClassSet, 'mr-2-0 swiper-button-prev')}>
-            <SVG src={ArrowLeftIcon} className="w-3-0" />
+            <SVG src={ArrowLeftIcon} className="md:w-3-0 w-2-5" />
           </IconButton>
           <IconButton className={clsx(arrowWrapperClassSet, 'swiper-button-next')}>
-            <SVG src={ArrowRightIcon} className="w-3-0" />
+            <SVG src={ArrowRightIcon} className="md:w-3-0 w-2-5" />
           </IconButton>
         </div>
       </div>
-      <div className="absolute top-1-0 left-30-percent w-20-0 h-20-0">
+      <div className="absolute top-1-0 left-30-percent w-20-0 h-20-0 md:block hidden">
         <img src="/images/menu_thumbnail.png" className="w-full h-full rounded-full" alt="" />
       </div>
-      <div className="border mt-1-8 px-13-2 pt-4-4 pb-9-6">
-        <div className="ml-auto w-mc text-2-4 font-neue-lt">
+      <div className="border mt-1-8 md:px-13-2 px-2-5 md:pt-4-4 pt-2-5 md:pb-9-6 pb-3-0">
+        <div className="ml-auto w-mc text-2-4 font-neue-lt md:block hidden">
           <span ref={currentSlideIndexRef}>1</span> / 3
         </div>
-        <div className="mt-2-4">
-          <SVG src={MenuLogo} className="w-13-2" />
+        <div className="md:mt-2-4">
+          <SVG src={MenuLogo} className="md:w-13-2 w-4-6" />
         </div>
-        <div className="h-0-1 bg-current mt-6-0 mb-3-2" />
+        <div className="h-0-1 bg-current md:mt-6-0 mt-1-5 md:mb-3-2 mb-2-5" />
         <div className="w-full">
           <Swiper {...swiperOptions} className="h-full" onSlideChange={slideChangeHandler}>
             <SwiperSlide className="h-full">{foodGeoNode}</SwiperSlide>
