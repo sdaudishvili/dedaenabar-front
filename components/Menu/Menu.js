@@ -100,7 +100,7 @@ function Menu({ className, foods, drinks }) {
   };
 
   return (
-    <div className={clsx(className, 'menu relative select-none')}>
+    <div className={clsx(className, 'menu relative select-none')} id="menu">
       <div className="flex items-center justify-between text-6-2 font-ranua-rg">
         <div>/ Menu</div>
         <div className="flex items-center">

@@ -1,11 +1,9 @@
 /* eslint-disable react/no-array-index-key */
-import { getHomePageContent } from '@/api/common';
 import { LogoAnimation } from '@/components/LogoAnimation';
 import { Menu } from '@/components/Menu';
 import { RegistrationForm } from '@/components/RegistrationForm';
 import { drinks } from '@/mocks/drinks';
 import { foods } from '@/mocks/foods';
-import { withDefaultProps } from '@/utils/withDefaultProps';
 
 function Home() {
   return (
@@ -30,19 +28,5 @@ function Home() {
     </div>
   );
 }
-
-export const getStaticProps = withDefaultProps(async (context, defaultProps) => {
-  const fetchData = () => Promise.all([getHomePageContent({ languageCode: context.locale })]);
-
-  const [homeContent] = await fetchData();
-
-  return {
-    props: {
-      homeContent,
-      ...defaultProps
-    },
-    revalidate: 10
-  };
-});
 
 export default Home;

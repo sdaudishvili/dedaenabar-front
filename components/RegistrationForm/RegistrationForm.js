@@ -1,7 +1,8 @@
 import clsx from 'clsx';
 import PropTypes from 'prop-types';
-import { ImageUploader } from '../ImageUploader';
-import { Input } from '../Input';
+import { FormSubmitButton } from '@/components/FormSubmitButton';
+import { ImageUploader } from '@/components/ImageUploader';
+import { Input } from '@/components/Input';
 
 function RegistrationForm({ className }) {
   const [values, setValues] = React.useState({});
@@ -43,23 +44,9 @@ function RegistrationForm({ className }) {
           <ImageUploader onChange={setFile} className="col-span-2" />
         </div>
       </div>
-      <div className="h-10-0 w-full border-t font-ranua-rg text-3-6 relative">
-        <button
-          type="button"
-          onClick={submitHandler}
-          className="absolute inset-0 hover:bg-purple text-dark duration-150"
-        >
-          Confirm
-        </button>
-        <div
-          className={clsx(
-            { 'opacity-0 pointer-events-none': !success },
-            'absolute inset-0 bg-green flex items-center justify-center duration-150 text-[#243628]'
-          )}
-        >
-          Success
-        </div>
-      </div>
+      <FormSubmitButton success={success} onClick={submitHandler} className="border-t">
+        Confirm
+      </FormSubmitButton>
     </div>
   );
 }
