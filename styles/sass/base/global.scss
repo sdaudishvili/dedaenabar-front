@@ -18,7 +18,7 @@ html {
     font-size: 1.6rem;
     background-color: theme('colors.light');
     color: theme('colors.dark');
-    @apply duration-150;
+    // @apply duration-150;
     transition-property: background-color, border-color, color, fill;
     line-height: var(--ratio);
     text-rendering: optimizeLegibility;

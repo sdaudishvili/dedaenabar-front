@@ -4,7 +4,7 @@ import { Footer } from './Footer';
 
 function Layout({ children, socialLinks }) {
   return (
-    <div className="grid grid-rows-[max-content_minmax(0,1fr)_max-content] min-h-screen container">
+    <div className="grid grid-rows-[max-content_minmax(0,1fr)_max-content] grid-cols-1 min-h-screen container">
       <Header />
       <main className="">{children}</main>
       <Footer socialLinks={socialLinks} />
