@@ -14,12 +14,11 @@ function RegistrationForm({ className }) {
 
   const submitHandler = () => {
     const fd = new FormData();
-    fd.append('name', values.name);
-    fd.append('surname', values.surname);
-    fd.append('link', values.link);
+    fd.append('first_name', values.first_name);
+    fd.append('last_name', values.last_name);
+    fd.append('fb_profile', values.fb_profile);
     fd.append('email', values.email);
-    fd.append('file', file);
-    console.log(fd);
+    fd.append('user_image', file);
     setSuccess(true);
   };
 
@@ -37,9 +36,9 @@ function RegistrationForm({ className }) {
           Registration <span className="text-purple">Form</span>
         </p>
         <div className="grid grid-cols-2 gap-x-3-0 gap-y-7-0 mt-6-6">
-          <Input {...generateTextFieldProps('name')} placeholder="Name" />
-          <Input {...generateTextFieldProps('surname')} placeholder="Surname" />
-          <Input {...generateTextFieldProps('link')} placeholder="Facebook Profile Link" className="col-span-2" />
+          <Input {...generateTextFieldProps('first_name')} placeholder="Name" />
+          <Input {...generateTextFieldProps('last_name')} placeholder="Surname" />
+          <Input {...generateTextFieldProps('fb_profile')} placeholder="Facebook Profile Link" className="col-span-2" />
           <Input {...generateTextFieldProps('email')} placeholder="E-mail" className="col-span-2" />
           <ImageUploader onChange={setFile} className="col-span-2" />
         </div>

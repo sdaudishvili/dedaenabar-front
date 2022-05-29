@@ -1,13 +1,6 @@
-export const handleSuccess =
-  (resolve, reject, isMany = false) =>
-  (response) => {
-    if (response.status === 204) return reject();
-    if (isMany) {
-      const { data: items = [], meta: { total = 0 } = {} } = response.data;
-      return resolve({ items, total });
-    }
-    return resolve(response.data);
-  };
+export const handleSuccess = (resolve) => (response) => {
+  return resolve(response.data);
+};
 
 export const handleError = (reject) => (error) => {
   if (error.response) {

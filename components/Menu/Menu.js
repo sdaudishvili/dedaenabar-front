@@ -25,12 +25,14 @@ const swiperOptions = {
 function Menu({ className, foods, drinks }) {
   const currentSlideIndexRef = React.useRef(null);
 
-  const reducedDrinks = drinks.reduce(
-    (acc, cur) => ({ ...acc, [cur.type]: [...(acc[cur.type] || []), { title: cur.title_eng, price: cur.price }] }),
-    {}
+  const reducedDrinks = React.useMemo(
+    () =>
+      drinks.reduce(
+        (acc, cur) => ({ ...acc, [cur.type]: [...(acc[cur.type] || []), { title: cur.title_eng, price: cur.price }] }),
+        {}
+      ),
+    [drinks]
   );
-
-  console.log(Object.entries(reducedDrinks));
 
   const foodGeoNode = (
     <div>
