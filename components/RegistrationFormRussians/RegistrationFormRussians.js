@@ -79,11 +79,17 @@ function RegistrationFormRussians({ className }) {
         <p className="md:text-4-8 text-3-6 font-ranua-rg">
           Registration <span className="text-purple">Form</span>
         </p>
-        <div className="grid md:grid-cols-2 grid-cols-1 gap-3-0 md:mt-6-6 mt-3-0">
+        <div className="font-neue-th tracking-wide italic md:text-1-6 text-1-2 md:mt-5-0 mt-3-0 capitalize">
+          Citizens of russia need a VISA to enter Dedaena bar because not ALL russians are welcome. We stand for
+          equality and unity, but we need to make sure, that brainwashed russian imperialists do not end up in our bar.
+          Please support us by filling up a VISA application, so nobody has to hang out alongside ass*oles. Thanks for
+          understanding.
+        </div>
+        <div className="grid md:grid-cols-2 grid-cols-1 gap-3-0 md:mt-5-0 mt-3-0">
           <Input {...generateTextFieldProps('first_name')} placeholder="Name" />
           <Input {...generateTextFieldProps('last_name')} placeholder="Surname" />
         </div>
-        <div className="font-neue-lt italic md:text-1-6 text-1-2 md:mt-5-0 mt-3-0 capitalize">
+        <div className="font-neue-th tracking-wide italic md:text-1-6 text-1-2 md:mt-5-0 mt-3-0 capitalize">
           I am a citizen of Russia visiting Georgia. Having respect for my host country and its people, I agree to
           following:
         </div>
@@ -98,11 +104,11 @@ function RegistrationFormRussians({ className }) {
             />
           ))}
         </div>
-        <div className="font-neue-lt italic md:text-1-6 text-1-2 md:mt-4-0 mt-3-0 capitalize">
+        <div className="font-neue-th tracking-wide italic md:text-1-6 text-1-2 md:mt-4-0 mt-3-0 capitalize">
           I understand that Dedaena bar is a friendly and tolerant place and Visa policy had been implemented due to a
           delicate political situation and some “bad” Russians who misbehaved in Dedaena bar.
         </div>
-        <div className="font-neue-lt italic md:text-1-6 text-1-2 mt-2-0 capitalize">
+        <div className="font-neue-th tracking-wide italic md:text-1-6 text-1-2 mt-2-0 capitalize">
           I have read through General code of behavior:
         </div>
         <div className="mt-2-0">
@@ -116,13 +122,16 @@ function RegistrationFormRussians({ className }) {
             />
           ))}
         </div>
-        <div className="font-neue-lt italic md:text-1-6 text-1-2 md:mt-5-0 mt-3-0 capitalize">
+        <div className="font-neue-th tracking-wide italic md:text-1-6 text-1-2 md:mt-5-0 mt-3-0 capitalize">
           Provide any kind of ID for entering Dedaena Bar. To receive your visa please input your email:
         </div>
         <Input {...generateTextFieldProps('email')} placeholder="Email" className="md:w-50-percent mt-3-0" />
+        <div className="font-neue-th tracking-wide italic md:text-1-6 text-1-2 mt-1-5 capitalize">
+          Visa will be delivered in your mail inbox
+        </div>
       </div>
       <FormSubmitButton success={success} onClick={submitHandler} className="border-t">
-        Confirm
+        Sign Up
       </FormSubmitButton>
     </div>
   );

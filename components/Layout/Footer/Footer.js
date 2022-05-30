@@ -12,13 +12,13 @@ function Footer({ socialLinks, className }) {
       <div className="md:h-13-2 h-7-8 flex items-center justify-between md:border-0 border-t border-b md:px-0 px-2-0">
         <div className="flex items-center">
           <a href="https://www.facebook.com/" target="_blank" rel="noreferrer" className="block mr-2-3">
-            <IconButton className="border rounded-full md:w-5-5 w-4-0 md:h-5-5 h-4-0 hover:text-purple duration-150 text-dark">
-              <SVG src={FacebookIcon} className="md:w-1-1 w-0-7" />
+            <IconButton className="border rounded-full md:w-5-5 w-4-0 md:h-5-5 h-4-0 group text-dark">
+              <SVG src={FacebookIcon} className="md:w-1-1 w-0-7 group-hover:text-purple duration-150" />
             </IconButton>
           </a>
           <a href="https://www.instagram.com/" target="_blank" rel="noreferrer">
-            <IconButton className="border rounded-full md:w-5-5 w-4-0 md:h-5-5 h-4-0 hover:text-purple duration-150 text-dark">
-              <SVG src={InstagramIcon} className="md:w-2-5 w-1-8" />
+            <IconButton className="border rounded-full md:w-5-5 w-4-0 md:h-5-5 h-4-0 group text-dark">
+              <SVG src={InstagramIcon} className="md:w-2-5 w-1-8 group-hover:text-purple duration-150" />
             </IconButton>
           </a>
         </div>

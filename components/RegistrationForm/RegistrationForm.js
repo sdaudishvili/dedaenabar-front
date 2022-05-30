@@ -36,7 +36,10 @@ function RegistrationForm({ className }) {
         <p className="md:text-4-8 text-3-6 font-ranua-rg">
           Registration <span className="text-purple">Form</span>
         </p>
-        <div className="grid md:grid-cols-2 grid-cols-1 gap-x-3-0 md:gap-y-7-0 gap-y-3-0 md:mt-6-6 mt-4-0">
+        <p className="font-neue-th tracking-wide italic md:mt-3-5 mt-3-0 md:text-1-6 text-1-2">
+          Avoid inconvenient moment of Face Control by applying for authorization, gain multi pass QR code and WELCOME
+        </p>
+        <div className="grid md:grid-cols-2 grid-cols-1 gap-x-3-0 md:gap-y-7-0 gap-y-3-0 md:mt-3-5 mt-3-0">
           <Input {...generateTextFieldProps('first_name')} placeholder="Name" />
           <Input {...generateTextFieldProps('last_name')} placeholder="Surname" />
           <Input
