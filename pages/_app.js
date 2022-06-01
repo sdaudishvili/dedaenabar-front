@@ -18,7 +18,7 @@ function App({ Component, pageProps }) {
       <HeaderTagsRenderer
         title="Dedaena Bar"
         description="Outspoken location with happy radiation. Democratic space where one embraces the different"
-        image="/dedaena.png"
+        image="/share-pic.png"
       >
         <meta property="og:site_name" key="ogSiteName" content="Dedaena Bar" />
         <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
