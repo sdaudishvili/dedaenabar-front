@@ -9,22 +9,22 @@ function LogoAnimation({ className }) {
       <div className="mr-0-1 anim h-full flex items-center" style={{ animationDelay: '0' }}>
         <SVG src={LogoD} className="w-2-1" />
       </div>
-      <div className="mr-0-1 anim h-full flex items-center" style={{ animationDelay: '0.6s' }}>
+      <div className="mr-0-1 anim h-full flex items-center" style={{ animationDelay: '0.7s' }}>
         <SVG src={LogoE} className="w-2-3" />
       </div>
-      <div className="mr-0-1 anim h-full flex items-center" style={{ animationDelay: '1.2s' }}>
+      <div className="mr-0-1 anim h-full flex items-center" style={{ animationDelay: '1.4s' }}>
         <SVG src={LogoBigD} className="w-2-4" />
       </div>
-      <div className="mr-0-1 anim h-full flex items-center" style={{ animationDelay: '1.8s' }}>
+      <div className="mr-0-1 anim h-full flex items-center" style={{ animationDelay: '2.1s' }}>
         <SVG src={LogoA} className="w-2-8" />
       </div>
-      <div className="mr-0-1 anim h-full flex items-center" style={{ animationDelay: '2.4s' }}>
+      <div className="mr-0-1 anim h-full flex items-center" style={{ animationDelay: '2.8s' }}>
         <SVG src={LogoE} className="w-2-3" />
       </div>
-      <div className="mr-0-1 anim h-full flex items-center" style={{ animationDelay: '3s' }}>
+      <div className="mr-0-1 anim h-full flex items-center" style={{ animationDelay: '3.5s' }}>
         <SVG src={LogoN} className="w-2-1" />
       </div>
-      <div className="mr-0-1 anim h-full flex items-center" style={{ animationDelay: '3.6s' }}>
+      <div className="mr-0-1 anim h-full flex items-center" style={{ animationDelay: '4.3s' }}>
         <SVG src={LogoBigA} className="w-3-1" />
       </div>
     </div>

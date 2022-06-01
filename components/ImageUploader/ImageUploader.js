@@ -17,7 +17,7 @@ function ImageUploader({ className, onChange }) {
       <div className="md:flex justify-between items-center">
         <div className="font-ranua-md">
           <p>Upload Your Profile Picture Here</p>
-          <p className="font-neue-th tracking-wide italic mt-0-6 md:text-1-6 text-1-2">
+          <p className="font-neue-lt tracking-wide italic mt-0-6 md:text-1-6 text-1-2">
             Profile picture with no good Face visibility will not be considered
           </p>
         </div>
