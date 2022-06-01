@@ -35,7 +35,7 @@ function Menu({ className, foods, drinks }) {
   );
 
   const foodGeoNode = (
-    <div>
+    <div className="menu">
       <div className="font-bpg-square-caps md:text-2-4 text-1-4 md:mb-4-0 mb-2-5">ვეგეტარიანული სამზარეულო</div>
       <ul>
         {foods &&
