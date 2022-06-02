@@ -1,13 +1,27 @@
+import clsx from 'clsx';
+import { Burger } from '@/components/Burger';
 import { Logo } from '@/components/Logo';
 import { ModeSwitcher } from '@/components/ModeSwitcher';
 import { Navigation } from '@/components/Navigation';
+import useDisableScroll from '@/hooks/useDisableScroll';
 
 function Header() {
+  const [burgerOpened, setBurgerOpened] = React.useState(false);
+  useDisableScroll({ condition: burgerOpened });
   return (
     <header className="flex items-center justify-between md:h-10-0 h-8-3 md:border-0 border-b md:mx-0 -mx-2-0 px-2-0 pt-1-0">
       <Logo className="md:w-11-5 w-5-7" />
-      <Navigation />
-      <ModeSwitcher />
+      <Navigation className="md:block hidden" />
+      <ModeSwitcher className="md:ml-0 ml-auto" />
+      <Burger isOpened={burgerOpened} className="md:hidden ml-2-1" onClick={() => setBurgerOpened((val) => !val)} />
+      <div
+        className={clsx(
+          { 'opacity-0 pointer-events-none translate-x-100-percent': !burgerOpened },
+          'fixed top-8-3 left-0 bottom-0 right-0 bg-light z-100 duration-500'
+        )}
+      >
+        <Navigation />
+      </div>
     </header>
   );
 }
