@@ -2,23 +2,18 @@ import propTypes from 'prop-types';
 import { Header } from './Header';
 import { Footer } from './Footer';
 
-function Layout({ children, socialLinks }) {
+function Layout({ children }) {
   return (
     <div className="grid grid-rows-[max-content_minmax(0,1fr)_max-content] grid-cols-1 min-h-screen container">
       <Header />
       <main className="">{children}</main>
-      <Footer socialLinks={socialLinks} />
+      <Footer />
     </div>
   );
 }
 
 Layout.propTypes = {
-  children: propTypes.node.isRequired,
-  socialLinks: propTypes.object
-};
-
-Layout.defaultProps = {
-  socialLinks: {}
+  children: propTypes.node.isRequired
 };
 
 export default Layout;
