@@ -102,8 +102,8 @@ function Menu({ className, foods, drinks }) {
   return (
     <div className={clsx(className, 'menu relative select-none')} id="menu">
       <div className="flex items-center justify-between md:text-6-2 text-3-6 font-ranua-rg">
-        <div>/ Menu</div>
-        <div className="flex items-center">
+        <div className="menu__title">/ Menu</div>
+        <div className="flex items-center menu__arrows">
           <IconButton className={clsx(arrowWrapperClassSet, 'mr-2-0 swiper-button-prev')}>
             <SVG src={ArrowLeftIcon} className="md:w-3-0 w-2-5" />
           </IconButton>
@@ -112,10 +112,10 @@ function Menu({ className, foods, drinks }) {
           </IconButton>
         </div>
       </div>
-      <div className="absolute top-1-0 left-30-percent w-20-0 h-20-0 md:block hidden">
+      <div className="absolute top-1-0 left-30-percent w-20-0 h-20-0 md:block hidden menu__image">
         <img src="/images/menu_thumbnail.png" className="w-full h-full rounded-full" alt="" />
       </div>
-      <div className="border mt-1-8 md:px-13-2 px-2-5 md:pt-4-4 pt-2-5 md:pb-9-6 pb-3-0">
+      <div className="border mt-1-8 md:px-13-2 px-2-5 md:pt-4-4 pt-2-5 md:pb-9-6 pb-3-0 menu__menu">
         <div className="ml-auto w-mc text-2-4 font-neue-lt md:block hidden">
           <span ref={currentSlideIndexRef}>1</span> / 3
         </div>

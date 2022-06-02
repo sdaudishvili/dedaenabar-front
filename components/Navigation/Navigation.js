@@ -4,12 +4,8 @@ import { useRouter } from 'next/router';
 import { RouterLink } from '../RouterLink';
 
 function Navigation({ className }) {
-  const { pathname, push } = useRouter();
+  const { pathname } = useRouter();
 
-  const menuClickHandler = () => {
-    if (pathname !== '/') push('/#menu');
-    else push('#menu');
-  };
   return (
     <nav className={clsx(className, ' text-2-2 font-neue-lt md:block hidden')}>
       <ul className="flex items-center">
@@ -19,12 +15,8 @@ function Navigation({ className }) {
         <li className={clsx({ 'font-neue-bd': pathname === '/for-russians' }, 'mr-5-0')}>
           <RouterLink href="/for-russians">/ For Russian Citizens</RouterLink>
         </li>
-        <li
-          className={clsx({ 'font-neue-bd': pathname === '/menu' }, 'cursor-pointer')}
-          onClick={menuClickHandler}
-          aria-hidden
-        >
-          <p>/ Menu</p>
+        <li className={clsx({ 'font-neue-bd': pathname === '/menu' }, 'cursor-pointer')}>
+          <RouterLink href="/for-russians">/ For Russian Citizens</RouterLink>
         </li>
       </ul>
     </nav>
