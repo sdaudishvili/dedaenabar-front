@@ -5,7 +5,13 @@ function FormSubmitButton(props) {
   const { className, onClick, success, children } = props;
 
   return (
-    <div className={clsx(className, 'md:h-10-0 h-6-0 w-full font-ranua-rg md:text-3-6 text-2-4 relative')}>
+    <div
+      className={clsx(
+        className,
+        [success ? 'h-8-0' : 'h-6-0'],
+        'md:h-10-0 w-full font-ranua-rg md:text-3-6 text-2-4 relative'
+      )}
+    >
       <button
         type="button"
         onClick={onClick}
@@ -16,7 +22,7 @@ function FormSubmitButton(props) {
       <div
         className={clsx(
           { 'opacity-0 pointer-events-none': !success },
-          'absolute left-0 top-0 h-full w-full bg-green flex items-center justify-center duration-150 text-[#243628]'
+          'absolute left-0 top-0 h-full w-full bg-green flex items-center justify-center duration-150 text-[#243628] text-center'
         )}
       >
         Your Request was successfully sent!

@@ -3,12 +3,12 @@ import PropTypes from 'prop-types';
 
 function Input({ className, value, onChange, errored, required, placeholder, ...rest }) {
   return (
-    <div className={clsx(className, 'relative uppercase', { 'text-red': errored })}>
+    <div className={clsx(className, 'relative uppercase border-b', { 'text-red': errored })}>
       <input
         {...rest}
         value={value}
         onChange={onChange}
-        className="pb-1-0 pt-0-2 border-b w-full font-ranua-rg"
+        className="pb-1-0 pt-0-2 w-full font-ranua-rg"
         placeholder={`${placeholder} ${required ? '*' : ''}`}
       />
       <style jsx>{`

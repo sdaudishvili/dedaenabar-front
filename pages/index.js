@@ -16,7 +16,6 @@ function Home() {
       scrollTrigger: {
         once: true,
         trigger: '.menu',
-        markers: true,
         start: 'top center',
         end: '+=0'
         // start: '',
@@ -34,7 +33,6 @@ function Home() {
       scrollTrigger: {
         once: true,
         trigger: '.menu',
-        markers: true,
         start: 'top center',
         end: '+=0'
         // start: '',
