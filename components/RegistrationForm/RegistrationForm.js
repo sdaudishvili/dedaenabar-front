@@ -2,25 +2,38 @@ import clsx from 'clsx';
 import PropTypes from 'prop-types';
 import { FormSubmitButton } from '@/components/FormSubmitButton';
 import { ImageUploader } from '@/components/ImageUploader';
+import { ErrorMessage } from '@/components/ErrorMessage';
 import { Input } from '@/components/Input';
+import { register } from '@/api';
+import useDisableScroll from '@/hooks/useDisableScroll';
 
 function RegistrationForm({ className }) {
   const [values, setValues] = React.useState({});
-  const [file, setFile] = React.useState();
+  const [file, setFile] = React.useState(null);
   const [success, setSuccess] = React.useState(false);
+  const [error, setError] = React.useState(false);
+
+  useDisableScroll({ condition: error });
 
   const changeHandler = (e) => {
     setValues({ ...values, [e.target.name]: e.target.value });
   };
 
-  const submitHandler = () => {
+  const submitHandler = async () => {
     const fd = new FormData();
-    fd.append('first_name', values.first_name);
-    fd.append('last_name', values.last_name);
-    fd.append('fb_profile', values.fb_profile);
-    fd.append('email', values.email);
     fd.append('user_image', file);
-    setSuccess(true);
+    try {
+      await register(fd, values);
+      setValues({});
+      setFile(null);
+      setSuccess(true);
+      setTimeout(() => {
+        setSuccess(false);
+      }, 1000);
+    } catch (error) {
+      setError(true);
+      console.log(error);
+    }
   };
 
   const generateTextFieldProps = (key) => ({
@@ -54,6 +67,7 @@ function RegistrationForm({ className }) {
       <FormSubmitButton success={success} onClick={submitHandler} className="border-t">
         Confirm
       </FormSubmitButton>
+      {error && <ErrorMessage message="Error occured!" onClose={() => setError(false)} />}
     </div>
   );
 }

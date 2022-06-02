@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 import { Input } from '@/components/Input';
 import { FormSubmitButton } from '@/components/FormSubmitButton';
 import { Checkbox } from '../Checkbox';
+import { getVisa } from '@/api';
+import { ErrorMessage } from '../ErrorMessage';
 
 const firstHalf = [
   { key: 'term_1', label: 'I didn’t vote for Putin, he is a dictator' },
@@ -32,7 +34,7 @@ const secondHalf = [
   { key: 'term_15', label: 'Do not engage into political discussions while being drunk' }
 ];
 
-const defaultValues = {
+const termsDefaultValues = {
   term_1: false,
   term_2: false,
   term_3: false,
@@ -47,7 +49,10 @@ const defaultValues = {
   term_12: false,
   term_13: false,
   term_14: false,
-  term_15: false,
+  term_15: false
+};
+
+const defaultValues = {
   first_name: '',
   last_name: '',
   email: ''
@@ -55,21 +60,37 @@ const defaultValues = {
 
 function RegistrationFormRussians({ className }) {
   const [values, setValues] = React.useState({ ...defaultValues });
+  const [terms, setTerms] = React.useState({ ...termsDefaultValues });
   const [success, setSuccess] = React.useState(false);
+  const [error, setError] = React.useState(false);
 
   const changeHandler = (key, value) => {
-    setValues({ ...values, [key]: value });
+    setTerms({ ...terms, [key]: value });
   };
 
-  const submitHandler = () => {
-    console.log(values);
-    setSuccess(true);
+  const inputChangeHandler = (e) => {
+    setValues({ ...values, [e.target.name]: e.target.value });
+  };
+
+  const submitHandler = async () => {
+    try {
+      await getVisa(values);
+      setTerms({ ...termsDefaultValues });
+      setValues({ ...defaultValues });
+      setSuccess(true);
+      setTimeout(() => {
+        setSuccess(false);
+      }, 1000);
+    } catch (error) {
+      setError(true);
+      console.log(error);
+    }
   };
 
   const generateTextFieldProps = (key) => ({
     name: key,
     value: values[key] || '',
-    onChange: (e) => changeHandler(key, e.target.value),
+    onChange: inputChangeHandler,
     required: true
   });
 
@@ -99,8 +120,8 @@ function RegistrationFormRussians({ className }) {
               className="md:mt-2-0 mt-1-6"
               key={x.key}
               label={x.label}
-              checked={!!values[x.key]}
-              onClick={() => changeHandler(x.key, !values[x.key])}
+              checked={!!terms[x.key]}
+              onClick={() => changeHandler(x.key, !terms[x.key])}
             />
           ))}
         </div>
@@ -117,8 +138,8 @@ function RegistrationFormRussians({ className }) {
               className="mt-2-0"
               key={x.key}
               label={x.label}
-              checked={!!values[x.key]}
-              onClick={() => changeHandler(x.key, !values[x.key])}
+              checked={!!terms[x.key]}
+              onClick={() => changeHandler(x.key, !terms[x.key])}
             />
           ))}
         </div>
@@ -133,6 +154,7 @@ function RegistrationFormRussians({ className }) {
       <FormSubmitButton success={success} onClick={submitHandler} className="border-t">
         Sign Up
       </FormSubmitButton>
+      {error && <ErrorMessage message="Error occured!" onClose={() => setError(false)} />}
     </div>
   );
 }
