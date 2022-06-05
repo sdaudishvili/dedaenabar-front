@@ -1,4 +1,5 @@
 import clsx from 'clsx';
+import { useRouter } from 'next/router';
 import { Burger } from '@/components/Burger';
 import { Logo } from '@/components/Logo';
 import { ModeSwitcher } from '@/components/ModeSwitcher';
@@ -12,6 +13,12 @@ import { InstagramIcon } from '@/components/Vectors/InstagramIcon';
 function Header() {
   const [burgerOpened, setBurgerOpened] = React.useState(false);
   useDisableScroll({ condition: burgerOpened });
+
+  const router = useRouter();
+
+  React.useEffect(() => {
+    if (burgerOpened) setBurgerOpened(false);
+  }, [router]);
   return (
     <>
       <header
