@@ -36,11 +36,13 @@ function Menu({ className, foods, drinks }) {
 
   const foodGeoNode = (
     <div className="menu">
-      <div className="font-bpg-square-caps md:text-2-4 text-1-4 md:mb-4-0 mb-2-5">ვეგეტარიანული სამზარეულო</div>
+      <div className="font-bpg-square-caps md:text-2-4 text-1-4 md:mb-4-0 mb-2-5 menu__geo__title">
+        ვეგეტარიანული სამზარეულო
+      </div>
       <ul>
         {foods &&
           foods.map((x, i) => (
-            <li className="md:mb-3-6 mb-2-5" key={JSON.stringify(i)}>
+            <li className="md:mb-3-6 mb-2-5 menu__geo__food" key={JSON.stringify(i)}>
               <p className="font-bpg-square-caps md:text-1-8 text-1-4">
                 {x.title_geo} {x.price}
               </p>

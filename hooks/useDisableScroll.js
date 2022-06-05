@@ -4,6 +4,7 @@ import { useRouter } from 'next/router';
 const useDisableScroll = ({ condition }) => {
   const router = useRouter();
   useEffect(() => {
+    console.log(condition);
     const body = document.querySelector('body');
     if (condition) {
       document.documentElement.classList.add('disable-overflow');

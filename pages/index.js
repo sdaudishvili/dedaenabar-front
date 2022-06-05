@@ -11,7 +11,7 @@ gsap.registerPlugin(ScrollTrigger);
 
 function Home() {
   React.useEffect(() => {
-    gsap.set(['.menu__title', '.menu__arrows', '.menu__iamge', '.menu__menu'], { autoAlpha: 0, y: 30 });
+    gsap.set(['.menu__title', '.menu__arrows', '.menu__image', '.menu__menu'], { autoAlpha: 0, y: 30 });
     const tl = gsap.timeline({
       scrollTrigger: {
         once: true,
@@ -23,27 +23,23 @@ function Home() {
       }
     });
 
-    tl.to('.menu__title', {});
-    gsap.to(['.menu__title', '.menu__arrows', '.menu__iamge', '.menu__menu'], {
+    gsap.set(['.menu__geo__title', '.menu__geo__food'], { autoAlpha: 0, y: 50, willChange: 'transform' });
+
+    tl.to(['.menu__title', '.menu__arrows', '.menu__image', '.menu__menu'], {
       autoAlpha: 1,
       y: 0,
-      stagger: 0.2,
       duration: 1,
-      ease: 'Expo.easeOut',
-      scrollTrigger: {
-        once: true,
-        trigger: '.menu',
-        start: 'top center',
-        end: '+=0'
-        // start: '',
-        // end: `+=0`
-      }
-    });
+      ease: 'Expo.easeOut'
+    }).to(
+      ['.menu__geo__title', '.menu__geo__food'],
+      { autoAlpha: 1, y: 0, stagger: 0.05, duration: 1, ease: 'Expo.easeOut' },
+      0.3
+    );
   }, []);
 
   return (
     <div className="home-page h-full md:border md:pt-13-0 pt-3-0 md:px-26-5 md:pb-16-2 pb-3-0">
-      <div className="absolute left-0 right-0 bg-light top-36-3 text-dark pt-6-0 pb-3-0 md:block hidden">
+      <div className="absolute left-[-10%] right-0 bg-light top-36-3 text-dark pt-6-0 pb-3-0 md:block hidden">
         <div className="w-[95%] m-auto">
           {Array(5)
             .fill()

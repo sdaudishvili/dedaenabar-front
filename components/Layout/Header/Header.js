@@ -13,7 +13,10 @@ function Header() {
   const [burgerOpened, setBurgerOpened] = React.useState(false);
   useDisableScroll({ condition: burgerOpened });
   return (
-    <header className="flex items-center justify-between md:h-10-0 h-8-3 md:border-0 border-b md:mx-0 -mx-2-0 md:px-5-0 px-2-0 pt-1-0">
+    <header
+      id="header"
+      className="flex items-center justify-between md:h-10-0 h-8-3 md:border-0 border-b md:mx-0 -mx-2-0 md:px-5-0 px-2-0 pt-1-0"
+    >
       <Logo className="md:w-11-5 w-5-7" />
       <Navigation className="md:block hidden" />
       <ModeSwitcher className="md:ml-0 ml-auto" />
