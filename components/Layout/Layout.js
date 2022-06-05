@@ -54,12 +54,12 @@ function Layout({ children }) {
       let percent = 0;
 
       // eslint-disable-next-line no-use-before-define
-      const id = setInterval(frame, LOADER_ON_SCREEN_DURATION / 100);
+      const id = setInterval(frame, LOADER_ON_SCREEN_DURATION / 10);
       function frame() {
         if (percent >= 100) {
           clearInterval(id);
         } else {
-          percent += 1;
+          percent += 10;
           percentNode.innerHTML = `${percent}%`;
         }
       }
