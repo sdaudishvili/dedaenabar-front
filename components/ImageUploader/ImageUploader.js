@@ -17,7 +17,7 @@ function ImageUploader({ className, onChange }) {
     <label htmlFor="button-file" className={clsx(className, 'relative w-full cursor-pointer group')}>
       <input id="button-file" type="file" onChange={changeHandler} className="hidden" />
       <div className="md:flex justify-between items-center relative">
-        <div className="font-ranua-md">
+        <div className="font-ranua-md flex-1">
           <p>Upload Your Profile Picture Here</p>
           <p className="font-neue-lt tracking-wide italic mt-0-6 md:text-1-6 text-1-2 w-80-percent">
             Profile picture with no good Face visibility will not be considered

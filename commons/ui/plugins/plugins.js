@@ -30,7 +30,7 @@ const mobileBreakpoints = [
 
 const ratio = {
   desktop: 192,
-  tablet: 128,
+  tablet: 102,
   mobile: 39
 };
 

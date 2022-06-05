@@ -7,7 +7,7 @@ import { SVG } from '@/components/SVG';
 
 function Footer({ className }) {
   return (
-    <footer id="footer" className={clsx(className, 'md:text-2-2 text-1-6 font-neue-lt md:mx-0 -mx-2-0 md:px-5-0')}>
+    <footer id="footer" className={clsx(className, 'md:text-2-2 text-1-6 font-neue-lt md:mx-0 -mx-2-0 lg:px-5-0')}>
       <div className="md:h-13-2 h-7-8 flex items-center justify-between md:border-0 border-t border-b md:px-0 px-2-0">
         <div className="flex items-center">
           <a href="https://www.facebook.com/" target="_blank" rel="noreferrer" className="block mr-2-3">

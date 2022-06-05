@@ -25,9 +25,7 @@ function Layout({ children }) {
   React.useEffect(() => {
     if (!loading) {
       const headerAndMainTl = gsap.timeline();
-      headerAndMainTl
-        .to('#main', { autoAlpha: 1, duration: 1, ease: 'Expo.easeOut' })
-        .to('#header', { autoAlpha: 1, y: 0, duration: 1, ease: 'Expo.easeOut' }, 0.2);
+      headerAndMainTl.to('#header', { autoAlpha: 1, y: 0, duration: 1, ease: 'Expo.easeOut' }, 0.2);
 
       gsap.to('#footer', {
         autoAlpha: 1,
@@ -43,7 +41,7 @@ function Layout({ children }) {
       });
     } else {
       gsap.set('#header', { autoAlpha: 0, y: -30, willChange: 'transform' });
-      gsap.set('#main', { autoAlpha: 0, willChange: 'transform' });
+      gsap.set('#footer', { autoAlpha: 0, y: -30 });
       gsap.set('#footer', { autoAlpha: 0, y: -30 });
     }
   }, [loading]);
@@ -52,6 +50,7 @@ function Layout({ children }) {
     <>
       <div className="grid grid-rows-[max-content_minmax(0,1fr)_max-content] grid-cols-1 min-h-screen container overflow-hidden">
         <Header />
+        <div id="anim" />
         <main id="main" className="">
           {children}
         </main>
