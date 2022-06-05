@@ -12,6 +12,8 @@ const LOADER_ON_SCREEN_DURATION = 2000;
 function Layout({ children }) {
   const [loading, setLoading] = React.useState(true);
 
+  const progressRef = React.useRef(null);
+
   React.useEffect(() => {
     document.documentElement.classList.add('disable-overflow');
     document.body.classList.add('disable-overflow');
@@ -46,6 +48,26 @@ function Layout({ children }) {
     }
   }, [loading]);
 
+  React.useEffect(() => {
+    const animateProgress = () => {
+      const percentNode = progressRef.current;
+      let percent = 0;
+
+      // eslint-disable-next-line no-use-before-define
+      const id = setInterval(frame, LOADER_ON_SCREEN_DURATION / 100);
+      function frame() {
+        if (percent >= 100) {
+          clearInterval(id);
+        } else {
+          percent += 1;
+          percentNode.innerHTML = `${percent}%`;
+        }
+      }
+    };
+
+    animateProgress();
+  }, []);
+
   return (
     <>
       <div className="grid grid-rows-[max-content_minmax(0,1fr)_max-content] grid-cols-1 min-h-screen container overflow-hidden">
@@ -63,7 +85,7 @@ function Layout({ children }) {
         )}
       >
         <div className="container h-full md:border font-ranua-rg md:text-15-0 text-5-0 flex items-center justify-center">
-          100%
+          <span ref={progressRef}>100%</span>
         </div>
       </div>
     </>
