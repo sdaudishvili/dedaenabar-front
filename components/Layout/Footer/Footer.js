@@ -10,12 +10,12 @@ function Footer({ className }) {
     <footer id="footer" className={clsx(className, 'md:text-2-2 text-1-6 font-neue-lt md:mx-0 -mx-2-0 lg:px-5-0')}>
       <div className="md:h-13-2 h-7-8 flex items-center justify-between md:border-0 border-t border-b md:px-0 px-2-0">
         <div className="flex items-center">
-          <a href="https://www.facebook.com/" target="_blank" rel="noreferrer" className="block mr-2-3">
+          <a href="https://www.facebook.com/dedaenabar" target="_blank" rel="noreferrer" className="block mr-2-3">
             <IconButton className="border rounded-full md:w-5-5 w-4-0 md:h-5-5 h-4-0 hover:bg-purple text-dark duration-150">
               <SVG src={FacebookIcon} className="md:w-1-1 w-0-7 duration-150" />
             </IconButton>
           </a>
-          <a href="https://www.instagram.com/" target="_blank" rel="noreferrer">
+          <a href="https://www.instagram.com/dedaenabar" target="_blank" rel="noreferrer">
             <IconButton className="border rounded-full md:w-5-5 w-4-0 md:h-5-5 h-4-0 hover:bg-purple text-dark duration-150">
               <SVG src={InstagramIcon} className="md:w-2-5 w-1-8 duration-150" />
             </IconButton>

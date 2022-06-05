@@ -39,12 +39,12 @@ function Header() {
         <Navigation />
         <div className="mt-auto p-2-0">
           <div className="flex items-center w-mc ml-auto">
-            <a href="https://www.facebook.com/" target="_blank" rel="noreferrer" className="block mr-2-3">
+            <a href="https://www.facebook.com/dedaenabar" target="_blank" rel="noreferrer" className="block mr-2-3">
               <IconButton className="border rounded-full w-8-0 h-8-0 hover:bg-purple text-dark duration-150">
                 <SVG src={FacebookIcon} className="w-1-5 duration-150" />
               </IconButton>
             </a>
-            <a href="https://www.instagram.com/" target="_blank" rel="noreferrer">
+            <a href="https://www.instagram.com/dedaenabar" target="_blank" rel="noreferrer">
               <IconButton className="border rounded-full w-8-0 h-8-0 hover:bg-purple text-dark duration-150">
                 <SVG src={InstagramIcon} className="w-3-8 duration-150" />
               </IconButton>
