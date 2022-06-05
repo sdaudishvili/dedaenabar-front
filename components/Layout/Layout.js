@@ -38,8 +38,7 @@ function Layout({ children }) {
           once: true,
           trigger: '#footer',
           start: 'top 90%',
-          end: '+=0',
-          markers: true
+          end: '+=0'
         }
       });
     } else {
@@ -51,7 +50,7 @@ function Layout({ children }) {
 
   return (
     <>
-      <div className="grid grid-rows-[max-content_minmax(0,1fr)_max-content] grid-cols-1 min-h-screen container">
+      <div className="grid grid-rows-[max-content_minmax(0,1fr)_max-content] grid-cols-1 min-h-screen container overflow-hidden">
         <Header />
         <main id="main" className="">
           {children}
@@ -64,7 +63,9 @@ function Layout({ children }) {
           'bg-light fixed top-0 left-0 w-screen h-screen z-100 duration-500 md:py-10-0 flex flex-col'
         )}
       >
-        <div className="container h-full border font-ranua-rg text-15-0 flex items-center justify-center">100%</div>
+        <div className="container h-full md:border font-ranua-rg md:text-15-0 text-5-0 flex items-center justify-center">
+          100%
+        </div>
       </div>
     </>
   );
