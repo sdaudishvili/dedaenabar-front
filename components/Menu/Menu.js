@@ -114,7 +114,7 @@ function Menu({ className, foods, drinks }) {
           </IconButton>
         </div>
       </div>
-      <div className="absolute top-1-0 left-30-percent w-20-0 h-20-0 md:block hidden menu__image">
+      <div className="absolute top-1-0 left-30-percent w-20-0 h-20-0 md:block hidden menu__image z-1">
         <img src="/images/menu_thumbnail.png" className="w-full h-full rounded-full" alt="" />
       </div>
       <div className="border mt-1-8 md:px-13-2 px-2-5 md:pt-4-4 pt-2-5 md:pb-9-6 pb-3-0 menu__menu">

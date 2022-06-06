@@ -85,7 +85,7 @@ function Layout({ children }) {
         )}
       >
         <div className="container h-full md:border font-ranua-rg md:text-15-0 text-5-0 flex items-center justify-center">
-          <span ref={progressRef}>100%</span>
+          <span ref={progressRef}>0%</span>
         </div>
       </div>
     </>

@@ -22,7 +22,7 @@ function Home() {
       scrollTrigger: {
         once: true,
         trigger: '.menu',
-        start: 'top center',
+        start: 'top 70%',
         end: '+=0'
         // start: '',
         // end: `+=0`
