@@ -6,7 +6,9 @@ import { IconButton } from '@/components/IconButton';
 import { SVG } from '@/components/SVG';
 import { ArrowLeftIcon } from '@/components/Vectors/ArrowLeftIcon';
 import { ArrowRightIcon } from '@/components/Vectors/ArrowRightIcon';
-import { MenuLogo } from '@/components/Vectors/MenuLogo';
+
+const softDrinksKey = 'SOFT DRINKS|უალკოჰოლო';
+const [softDrinksTitleEng, softDrinksTitleGeo] = softDrinksKey.split('|') || [];
 
 SwiperCore.use([Navigation]);
 
@@ -22,7 +24,7 @@ const swiperOptions = {
   }
 };
 
-function Menu({ className, foods, drinks }) {
+function Menu({ className, foods, drinks, addons }) {
   const currentSlideIndexRef = React.useRef(null);
 
   const reducedDrinks = React.useMemo(
@@ -33,6 +35,8 @@ function Menu({ className, foods, drinks }) {
       ),
     [drinks]
   );
+
+  const { [softDrinksKey]: softDrinks, ...mainDrinks } = reducedDrinks;
 
   const foodGeoNode = (
     <div className="menu">
@@ -50,6 +54,16 @@ function Menu({ className, foods, drinks }) {
             </li>
           ))}
       </ul>
+      <div className="h-0-1 w-full bg-dark" />
+      <div className="mt-3-0">
+        <p className="font-bpg-square-caps md:text-1-8 text-1-4 mb-1-0">ბურგერებზე 2</p>
+        {addons &&
+          addons.map((x) => (
+            <p className="font-bpg-square md:text-1-6 text-1-2" key={x.title_geo}>
+              {x.title_geo}
+            </p>
+          ))}
+      </div>
     </div>
   );
 
@@ -67,14 +81,24 @@ function Menu({ className, foods, drinks }) {
             </li>
           ))}
       </ul>
+      <div className="h-0-1 w-full bg-dark" />
+      <div className="mt-3-0">
+        <p className="font-ranua-md md:text-1-8 text-1-4 mb-1-0">Additions On Burgers 2</p>
+        {addons &&
+          addons.map((x) => (
+            <p className="font-neue-lt md:text-1-6 text-1-2" key={x.title_eng}>
+              {x.title_eng}
+            </p>
+          ))}
+      </div>
     </div>
   );
 
   const drinksNode = (
     <div>
       <ul className="md:columns-2">
-        {Object.entries(reducedDrinks) &&
-          Object.entries(reducedDrinks).map(([title, curDrinks]) => {
+        {Object.entries(mainDrinks) &&
+          Object.entries(mainDrinks).map(([title, curDrinks]) => {
             const [titleEng, titleGeo] = title?.split('|') || [];
             return (
               <li className="md:mb-5-0 mb-2-0" key={title}>
@@ -94,6 +118,21 @@ function Menu({ className, foods, drinks }) {
             );
           })}
       </ul>
+      <div className="h-0-1 w-full bg-dark md:my-4-0 my-2-0" />
+      <div className="">
+        <div className="">
+          <span className="font-ranua-md uppercase pr-1-0 md:text-2-4 text-1-4">{softDrinksTitleEng}</span>
+          <span className="font-bpg-square-caps md:text-2-0 text-1-2">{softDrinksTitleGeo}</span>
+        </div>
+        <ul className="mt-0-5 md:text-1-8 text-1-2 font-ranua-md">
+          {softDrinks &&
+            softDrinks.map((x) => (
+              <li key={x.title}>
+                {x.title} {x.price}
+              </li>
+            ))}
+        </ul>
+      </div>
     </div>
   );
 
@@ -121,11 +160,7 @@ function Menu({ className, foods, drinks }) {
         <div className="ml-auto w-mc text-2-4 font-neue-lt md:block hidden">
           <span ref={currentSlideIndexRef}>1</span> / 3
         </div>
-        <div className="md:mt-2-4">
-          <SVG src={MenuLogo} className="md:w-13-2 w-4-6" />
-        </div>
-        <div className="h-0-1 bg-current md:mt-6-0 mt-1-5 md:mb-3-2 mb-2-5" />
-        <div className="w-full">
+        <div className="w-full md:mt-9-2 mt-4-0">
           <Swiper {...swiperOptions} className="h-full" onSlideChange={slideChangeHandler}>
             <SwiperSlide className="h-full">{foodGeoNode}</SwiperSlide>
             <SwiperSlide className="h-full">{foodEngNode}</SwiperSlide>
@@ -140,13 +175,15 @@ function Menu({ className, foods, drinks }) {
 Menu.propTypes = {
   className: PropTypes.string,
   foods: PropTypes.array,
-  drinks: PropTypes.array
+  drinks: PropTypes.array,
+  addons: PropTypes.array
 };
 
 Menu.defaultProps = {
   className: '',
   foods: [],
-  drinks: []
+  drinks: [],
+  addons: []
 };
 
 export default Menu;

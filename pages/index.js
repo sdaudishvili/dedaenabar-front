@@ -3,10 +3,7 @@ import gsap from 'gsap';
 import ScrollTrigger from 'gsap/dist/ScrollTrigger';
 import ReactDom from 'react-dom';
 import { LogoAnimation } from '@/components/LogoAnimation';
-import { Menu } from '@/components/Menu';
 import { RegistrationForm } from '@/components/RegistrationForm';
-import { drinks } from '@/mocks/drinks';
-import { foods } from '@/mocks/foods';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -15,32 +12,6 @@ function Home() {
 
   React.useEffect(() => {
     setMounted(true);
-  }, []);
-  React.useEffect(() => {
-    gsap.set(['.menu__title', '.menu__arrows', '.menu__image', '.menu__menu'], { autoAlpha: 0, y: 30 });
-    const tl = gsap.timeline({
-      scrollTrigger: {
-        once: true,
-        trigger: '.menu',
-        start: 'top 70%',
-        end: '+=0'
-        // start: '',
-        // end: `+=0`
-      }
-    });
-
-    gsap.set(['.menu__geo__title', '.menu__geo__food'], { autoAlpha: 0, y: 50, willChange: 'transform' });
-
-    tl.to(['.menu__title', '.menu__arrows', '.menu__image', '.menu__menu'], {
-      autoAlpha: 1,
-      y: 0,
-      duration: 1,
-      ease: 'Expo.easeOut'
-    }).to(
-      ['.menu__geo__title', '.menu__geo__food'],
-      { autoAlpha: 1, y: 0, stagger: 0.05, duration: 1, ease: 'Expo.easeOut' },
-      0.3
-    );
   }, []);
 
   return (
@@ -75,7 +46,6 @@ function Home() {
             ))}
         </div>
       </div>
-      <Menu foods={foods} className="md:mt-16-2 mt-18-5" drinks={drinks} />
     </div>
   );
 }
