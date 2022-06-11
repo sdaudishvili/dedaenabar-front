@@ -9,9 +9,11 @@ function ImageUploader({ className, onChange }) {
   const [value, setValue] = React.useState('');
 
   const changeHandler = (e) => {
-    const file = e.target.files[0];
-    setValue(file.name);
-    onChange(file);
+    const [file] = e.target.files;
+    if (file) {
+      setValue(file.name);
+      onChange(file);
+    }
   };
   return (
     <label htmlFor="button-file" className={clsx(className, 'relative w-full cursor-pointer group')}>

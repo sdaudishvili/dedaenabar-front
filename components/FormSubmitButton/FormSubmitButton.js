@@ -2,7 +2,8 @@ import PropTypes from 'prop-types';
 import clsx from 'clsx';
 
 function FormSubmitButton(props) {
-  const { className, onClick, success, children } = props;
+  // eslint-disable-next-line no-unused-vars
+  const { className, onClick, success, children, disabled } = props;
 
   return (
     <div
@@ -13,9 +14,13 @@ function FormSubmitButton(props) {
       )}
     >
       <button
+        disabled={disabled}
         type="button"
         onClick={onClick}
-        className="absolute left-0 top-0 h-full w-full hover:bg-purple text-dark duration-150"
+        className={clsx(
+          { 'pointer-events-none opacity-60': disabled },
+          'absolute left-0 top-0 h-full w-full hover:bg-purple text-dark duration-150'
+        )}
       >
         {children}
       </button>
@@ -35,14 +40,16 @@ FormSubmitButton.propTypes = {
   className: PropTypes.string,
   onClick: PropTypes.func,
   success: PropTypes.bool,
-  children: PropTypes.node
+  children: PropTypes.node,
+  disabled: PropTypes.bool
 };
 
 FormSubmitButton.defaultProps = {
   className: '',
   onClick: () => {},
   success: false,
-  children: null
+  children: null,
+  disabled: false
 };
 
 export default FormSubmitButton;

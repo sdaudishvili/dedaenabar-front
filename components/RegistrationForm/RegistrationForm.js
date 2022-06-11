@@ -7,13 +7,18 @@ import { Input } from '@/components/Input';
 import { register } from '@/api';
 import useDisableScroll from '@/hooks/useDisableScroll';
 
+const getErrMessage = (error) => {
+  return error.message;
+};
+
 function RegistrationForm({ className }) {
   const [values, setValues] = React.useState({});
   const [file, setFile] = React.useState(null);
   const [success, setSuccess] = React.useState(false);
-  const [error, setError] = React.useState(false);
+  const [errorMessage, setErrorMessage] = React.useState('');
+  const [loading, setLoading] = React.useState(false);
 
-  useDisableScroll({ condition: error });
+  useDisableScroll({ condition: errorMessage });
 
   const changeHandler = (e) => {
     setValues({ ...values, [e.target.name]: e.target.value });
@@ -22,6 +27,7 @@ function RegistrationForm({ className }) {
   const submitHandler = async () => {
     const fd = new FormData();
     fd.append('user_image', file);
+    setLoading(true);
     try {
       await register(fd, values);
       setValues({});
@@ -31,9 +37,9 @@ function RegistrationForm({ className }) {
         setSuccess(false);
       }, 1000);
     } catch (error) {
-      setError(true);
-      console.log(error);
+      setErrorMessage(getErrMessage(error.data));
     }
+    setLoading(false);
   };
 
   const generateTextFieldProps = (key) => ({
@@ -64,10 +70,10 @@ function RegistrationForm({ className }) {
           <ImageUploader onChange={setFile} className="md:col-span-2" />
         </div>
       </div>
-      <FormSubmitButton success={success} onClick={submitHandler} className="border-t">
+      <FormSubmitButton disabled={loading} success={success} onClick={submitHandler} className="border-t">
         Confirm
       </FormSubmitButton>
-      {error && <ErrorMessage message="Error occured!" onClose={() => setError(false)} />}
+      {errorMessage && <ErrorMessage message={errorMessage} onClose={() => setErrorMessage('')} />}
     </div>
   );
 }
