@@ -1,5 +1,6 @@
 import clsx from 'clsx';
 import { useRouter } from 'next/router';
+import gsap from 'gsap';
 import { Burger } from '@/components/Burger';
 import { Logo } from '@/components/Logo';
 import { ModeSwitcher } from '@/components/ModeSwitcher';
@@ -14,7 +15,25 @@ function Header() {
   const [burgerOpened, setBurgerOpened] = React.useState(false);
   useDisableScroll({ condition: burgerOpened });
 
+  const burgerMenuRef = React.useRef(null);
+  const tl = React.useRef(null);
+
+  React.useEffect(() => {
+    const navElems = burgerMenuRef.current.querySelectorAll('li');
+    tl.current = gsap
+      .timeline({ paused: true })
+      .fromTo(burgerMenuRef.current, { autoAlpha: 0, x: '100%' }, { autoAlpha: 1, x: 0 })
+      .fromTo(navElems, { autoAlpha: 0, x: 80 }, { autoAlpha: 1, x: 0, stagger: 0.2 }, 0.2);
+  }, []);
+
   const router = useRouter();
+  React.useEffect(() => {
+    if (burgerOpened) {
+      tl.current.play();
+    } else {
+      tl.current.reverse();
+    }
+  }, [burgerOpened]);
 
   React.useEffect(() => {
     if (burgerOpened) setBurgerOpened(false);
@@ -31,9 +50,11 @@ function Header() {
         <Burger isOpened={burgerOpened} className="md:hidden ml-2-1" onClick={() => setBurgerOpened((val) => !val)} />
       </header>
       <div
+        ref={burgerMenuRef}
+        style={{ opacity: 0 }}
         className={clsx(
-          { 'opacity-0 pointer-events-none translate-x-100-percent': !burgerOpened },
-          'fixed top-8-3 left-0 bottom-0 right-0 bg-light z-100 duration-500 md:hidden flex flex-col'
+          { 'pointer-events-none': !burgerOpened },
+          'fixed top-8-3 left-0 bottom-0 right-0 bg-light z-100 md:hidden flex flex-col'
         )}
       >
         <Navigation />

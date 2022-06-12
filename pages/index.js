@@ -37,13 +37,15 @@ function Home() {
         )}
 
       <RegistrationForm className="bg-light relative z-1 text-dark" />
-      <div className="absolute left-0 w-full overflow-hidden bg-light text-dark pt-6-0 pb-3-0 md:hidden">
-        <div className="flex">
-          {Array(3)
-            .fill()
-            .map((_x, j) => (
-              <LogoAnimation secondary key={`col-${j}`} />
-            ))}
+      <div className="h-15-0 md:hidden">
+        <div className="absolute left-0 w-full overflow-hidden bg-light text-dark pt-6-0 pb-3-0">
+          <div className="flex">
+            {Array(3)
+              .fill()
+              .map((_x, j) => (
+                <LogoAnimation secondary key={`col-${j}`} />
+              ))}
+          </div>
         </div>
       </div>
     </div>
