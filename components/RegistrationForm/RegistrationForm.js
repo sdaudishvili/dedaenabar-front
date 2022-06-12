@@ -8,8 +8,10 @@ import { register } from '@/api';
 import useDisableScroll from '@/hooks/useDisableScroll';
 
 const getErrMessage = (error) => {
-  return error.message;
+  return error.message || '';
 };
+
+const isAllFieldFilled = (values) => Object.values(values).every((x) => x);
 
 function RegistrationForm({ className }) {
   const [values, setValues] = React.useState({});
@@ -20,24 +22,36 @@ function RegistrationForm({ className }) {
 
   useDisableScroll({ condition: errorMessage });
 
+  const imageUploadRef = React.useRef(null);
+
   const changeHandler = (e) => {
     setValues({ ...values, [e.target.name]: e.target.value });
   };
 
   const submitHandler = async () => {
-    const fd = new FormData();
-    fd.append('user_image', file);
     setLoading(true);
+    console.log(imageUploadRef.current);
     try {
-      await register(fd, values);
-      setValues({});
-      setFile(null);
-      setSuccess(true);
-      setTimeout(() => {
-        setSuccess(false);
-      }, 1000);
+      if (isAllFieldFilled(values) && file) {
+        const fd = new FormData();
+        fd.append('user_image', file);
+        await register(fd, values);
+        setValues({});
+        setFile(null);
+        setSuccess(true);
+        imageUploadRef.current.clearValue();
+        setTimeout(() => {
+          setSuccess(false);
+        }, 1000);
+      } else {
+        setErrorMessage('Please, fill all fields!');
+      }
     } catch (error) {
-      setErrorMessage(getErrMessage(error.data));
+      if (error.data) {
+        setErrorMessage(getErrMessage(error.data));
+      } else {
+        setErrorMessage('Error occured!');
+      }
     }
     setLoading(false);
   };
@@ -67,7 +81,7 @@ function RegistrationForm({ className }) {
             className="md:col-span-2"
           />
           <Input {...generateTextFieldProps('email')} placeholder="E-mail" className="md:col-span-2" />
-          <ImageUploader onChange={setFile} className="md:col-span-2" />
+          <ImageUploader onChange={setFile} className="md:col-span-2" ref={imageUploadRef} />
         </div>
       </div>
       <FormSubmitButton disabled={loading} success={success} onClick={submitHandler} className="border-t">

@@ -5,8 +5,10 @@ import { SVG } from '../SVG';
 import { FileArrowIcon } from '../Vectors/FileArrowIcon';
 import { FileArrowIconMobile } from '../Vectors/FileArrowIconMobile';
 
-function ImageUploader({ className, onChange }) {
+const ImageUploader = React.forwardRef(({ className, onChange }, ref) => {
   const [value, setValue] = React.useState('');
+
+  const inputRef = React.useRef(null);
 
   const changeHandler = (e) => {
     const [file] = e.target.files;
@@ -15,9 +17,17 @@ function ImageUploader({ className, onChange }) {
       onChange(file);
     }
   };
+
+  React.useImperativeHandle(ref, () => ({
+    clearValue() {
+      setValue('');
+      inputRef.current.value = '';
+    }
+  }));
+
   return (
     <label htmlFor="button-file" className={clsx(className, 'relative w-full cursor-pointer group')}>
-      <input id="button-file" type="file" onChange={changeHandler} className="hidden" />
+      <input id="button-file" type="file" onChange={changeHandler} className="hidden" ref={inputRef} />
       <div className="md:flex justify-between items-center relative">
         <div className="font-ranua-md flex-1">
           <p>Upload Your Profile Picture Here</p>
@@ -38,7 +48,9 @@ function ImageUploader({ className, onChange }) {
       <p className="max-w-full break absolute right-0 md:left-[auto] left-7-0 md:bottom-[-4rem] bottom-2-0">{value}</p>
     </label>
   );
-}
+});
+
+ImageUploader.displayName = 'ImageUploader';
 
 ImageUploader.propTypes = {
   className: PropTypes.string,

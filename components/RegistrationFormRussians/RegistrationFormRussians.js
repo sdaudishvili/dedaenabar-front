@@ -48,7 +48,7 @@ const termsDefaultValues = {
   term_11: false,
   term_12: false,
   term_13: false,
-  term_14: false,
+  term_14: false, // Should be false
   term_15: false
 };
 
@@ -58,11 +58,28 @@ const defaultValues = {
   email: ''
 };
 
+const getErrMessage = (error) => {
+  return error.message || '';
+};
+
+const isValid = (rules) => {
+  const objEntries = Object.entries(rules);
+  for (let i = 0; i < objEntries.length; i += 1) {
+    const [key, value] = objEntries[i];
+    if (!value && key !== 'term_14') return false;
+    if (value && key === 'term_14') return false;
+  }
+  return true;
+};
+
+const isAllFieldFilled = (values) => Object.values(values).every((x) => x);
+
 function RegistrationFormRussians({ className }) {
   const [values, setValues] = React.useState({ ...defaultValues });
   const [terms, setTerms] = React.useState({ ...termsDefaultValues });
+  const [loading, setLoading] = React.useState(false);
   const [success, setSuccess] = React.useState(false);
-  const [error, setError] = React.useState(false);
+  const [errorMessage, setErrorMessage] = React.useState('');
 
   const changeHandler = (key, value) => {
     setTerms({ ...terms, [key]: value });
@@ -73,18 +90,31 @@ function RegistrationFormRussians({ className }) {
   };
 
   const submitHandler = async () => {
+    setLoading(true);
     try {
-      await getVisa(values);
-      setTerms({ ...termsDefaultValues });
-      setValues({ ...defaultValues });
-      setSuccess(true);
-      setTimeout(() => {
-        setSuccess(false);
-      }, 1000);
+      if (isValid(terms)) {
+        if (isAllFieldFilled(values)) {
+          await getVisa(values);
+          setTerms({ ...termsDefaultValues });
+          setValues({ ...defaultValues });
+          setSuccess(true);
+          setTimeout(() => {
+            setSuccess(false);
+          }, 1000);
+        } else {
+          setErrorMessage('Please, fill all fields!');
+        }
+      } else {
+        setErrorMessage('Please, read all rules carefully!');
+      }
     } catch (error) {
-      setError(true);
-      console.log(error);
+      if (error.data) {
+        setErrorMessage(getErrMessage(error.data));
+      } else {
+        setErrorMessage('Error occured!');
+      }
     }
+    setLoading(false);
   };
 
   const generateTextFieldProps = (key) => ({
@@ -151,10 +181,10 @@ function RegistrationFormRussians({ className }) {
           Visa will be delivered in your mail inbox
         </div>
       </div>
-      <FormSubmitButton success={success} onClick={submitHandler} className="border-t">
+      <FormSubmitButton success={success} onClick={submitHandler} className="border-t" disabled={loading}>
         Sign Up
       </FormSubmitButton>
-      {error && <ErrorMessage message="Error occured!" onClose={() => setError(false)} />}
+      {errorMessage && <ErrorMessage message={errorMessage} onClose={() => setErrorMessage('')} />}
     </div>
   );
 }
